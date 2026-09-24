@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: nueva-web
+    runtime: node
+    plan: free
+    region: frankfurt # Same region as Neon DB (eu-central-1) for lowest latency
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # Set in Render Dashboard or will prompt during Blueprint creation
